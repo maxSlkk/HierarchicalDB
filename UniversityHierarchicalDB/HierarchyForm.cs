@@ -26,12 +26,12 @@ namespace UniversityHierarchicalDB
         {
             hierarchyTreeView.Nodes.Clear();
 
-            var rootItems = _repository.GetRootItems();
+            var rootItems = _repository.GetItemsByParentId((int?)null);
 
             foreach (var item in rootItems)
             {
                 var node = new TreeNode(item.Name, item.Id, 0);
-                if (_repository.GetChildrenItems(item.Id).Any())
+                if (_repository.GetItemsByParentId(item.Id).Any())
                 {
                     node.Nodes.Add(new TreeNode("TO_DELETE"));
                 }
@@ -87,7 +87,7 @@ namespace UniversityHierarchicalDB
 
             if (result == DialogResult.Yes)
             {
-                if (_repository.GetChildrenItems(node.ImageIndex).Count() == 0)
+                if (_repository.GetItemsByParentId(node.ImageIndex).Count() == 0)
                 {
                     _repository.RemoveItemById(hierarchyTreeView.SelectedNode.ImageIndex);
                     _repository.SaveChanges();
@@ -107,12 +107,12 @@ namespace UniversityHierarchicalDB
         {
             e.Node.Nodes.Clear();
 
-            var childrenItems = _repository.GetChildrenItems(e.Node.ImageIndex);
+            var childrenItems = _repository.GetItemsByParentId(e.Node.ImageIndex);
 
             foreach(var item in childrenItems)
             {
                 var node = new TreeNode(item.Name, item.Id, 0);
-                if (_repository.GetChildrenItems(item.Id).Any())
+                if (_repository.GetItemsByParentId(item.Id).Any())
                 {
                     node.Nodes.Add(new TreeNode("TO_DELETE"));
                 }

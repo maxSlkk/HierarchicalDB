@@ -45,12 +45,7 @@ namespace EfUniversityHierarchical
             return _context.UniversityItems.Find(itemId);
         }
 
-        public IEnumerable<UniversityItem> GetRootItems()
-        {
-            return _context.UniversityItems.Where(x => x.ParentId == (int?)null);
-        }
-
-        public IEnumerable<UniversityItem> GetChildrenItems(int itemId)
+        public IEnumerable<UniversityItem> GetItemsByParentId(int? itemId)
         {
             return _context.UniversityItems.Where(x => x.ParentId == itemId);
         }
