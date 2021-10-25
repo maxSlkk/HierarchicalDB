@@ -31,7 +31,10 @@ namespace UniversityHierarchicalDB
             foreach (var item in rootItems)
             {
                 var node = new TreeNode(item.Name, item.Id, 0);
-                node.Nodes.Add(new TreeNode("TO_DELETE"));
+                if (_repository.GetChildrenItems(item.Id).Any())
+                {
+                    node.Nodes.Add(new TreeNode("TO_DELETE"));
+                }
                 node.ContextMenuStrip = nodeContextMenu;
 
                 hierarchyTreeView.Nodes.Add(node);
@@ -109,7 +112,10 @@ namespace UniversityHierarchicalDB
             foreach(var item in childrenItems)
             {
                 var node = new TreeNode(item.Name, item.Id, 0);
-                node.Nodes.Add(new TreeNode("TO_DELETE"));
+                if (_repository.GetChildrenItems(item.Id).Any())
+                {
+                    node.Nodes.Add(new TreeNode("TO_DELETE"));
+                }
                 node.ContextMenuStrip = nodeContextMenu;
 
                 e.Node.Nodes.Add(node);
