@@ -52,8 +52,6 @@ namespace UniversityHierarchicalDB
 
                 if (result == DialogResult.OK)
                 {
-                    //var newNodeName = form.Result;
-
                     var node = new TreeNode(form.Result)
                     {
                         Tag = Guid.NewGuid()
@@ -64,8 +62,6 @@ namespace UniversityHierarchicalDB
                     _repository.SaveChanges();
 
                     hierarchyTreeView.Nodes.Add(node);
-
-                    //RefreshTree();
                 }
             }
         }
@@ -78,7 +74,6 @@ namespace UniversityHierarchicalDB
 
                 if (result == DialogResult.OK)
                 {
-                    //var newNodeName = form.Result;
                     var node = new TreeNode(form.Result)
                     {
                         Tag = Guid.NewGuid()
@@ -90,7 +85,6 @@ namespace UniversityHierarchicalDB
                     _repository.SaveChanges();
 
                     hierarchyTreeView.SelectedNode.Nodes.Add(node);
-                    //RefreshTree();
                 }
             }
         }
@@ -110,8 +104,6 @@ namespace UniversityHierarchicalDB
                     _repository.SaveChanges();
 
                     node.Parent.Nodes.Remove(node);
-
-                    //RefreshTree();
 
                     return;
                 }
