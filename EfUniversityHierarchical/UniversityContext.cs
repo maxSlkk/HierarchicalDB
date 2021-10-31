@@ -10,5 +10,11 @@ namespace EfUniversityHierarchical
         { }
 
         public DbSet<UniversityItem> UniversityItems { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<UniversityContext>(null);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

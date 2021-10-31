@@ -116,27 +116,26 @@ namespace UniversityHierarchicalDB
 
         private void hierarchyTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
-            if (e.Node.Nodes.Count == 1 && e.Node.Nodes[0].Text == "TO_DELETE")
+            if (e.Node.Nodes.Count != 1 && e.Node.Nodes[0].Text != "TO_DELETE") { return; }
+
+            e.Node.Nodes.Clear();
+
+            var childrenItems = _repository.GetItemsByParentId((Guid)e.Node.Tag);
+
+            foreach (var item in childrenItems)
             {
-                e.Node.Nodes.Clear();
-
-                var childrenItems = _repository.GetItemsByParentId((Guid)e.Node.Tag);
-
-                foreach (var item in childrenItems)
+                var node = new TreeNode(item.Name)
                 {
-                    var node = new TreeNode(item.Name)
-                    {
-                        Tag = item.Id
-                    };
+                    Tag = item.Id
+                };
 
-                    if (_repository.GetItemsByParentId(item.Id).Any())
-                    {
-                        node.Nodes.Add(new TreeNode("TO_DELETE"));
-                    }
-                    node.ContextMenuStrip = nodeContextMenu;
-
-                    e.Node.Nodes.Add(node);
+                if (_repository.GetItemsByParentId(item.Id).Any())
+                {
+                    node.Nodes.Add(new TreeNode("TO_DELETE"));
                 }
+                node.ContextMenuStrip = nodeContextMenu;
+
+                e.Node.Nodes.Add(node);
             }
         }
     }
