@@ -51,6 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202110241218269_InitialCreate.cs" />
+    <Compile Include="Migrations\202110241218269_InitialCreate.designer.cs">
+      <DependentUpon>202110241218269_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110311943078_ChangedIdToGuid.cs" />
+    <Compile Include="Migrations\202110311943078_ChangedIdToGuid.designer.cs">
+      <DependentUpon>202110311943078_ChangedIdToGuid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniversityContext.cs" />
     <Compile Include="UniversityRepository.cs" />
@@ -64,6 +73,14 @@
       <Project>{6E0767FD-E748-470B-A9E4-8096ED24D2E1}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202110241218269_InitialCreate.resx">
+      <DependentUpon>202110241218269_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110311943078_ChangedIdToGuid.resx">
+      <DependentUpon>202110311943078_ChangedIdToGuid.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

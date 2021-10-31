@@ -14,7 +14,7 @@ namespace UniversityHierarchicalDB
         {
             InitializeComponent();
 
-            hierarchyTreeView.NodeMouseClick += (sender, args) 
+            hierarchyTreeView.NodeMouseClick += (sender, args)
                 => hierarchyTreeView.SelectedNode = args.Node;
 
             _repository = new UniversityRepository();
@@ -26,11 +26,14 @@ namespace UniversityHierarchicalDB
         {
             hierarchyTreeView.Nodes.Clear();
 
-            var rootItems = _repository.GetItemsByParentId((int?)null);
+            var rootItems = _repository.GetItemsByParentId((Guid?)null);
 
             foreach (var item in rootItems)
             {
-                var node = new TreeNode(item.Name, item.Id, 0);
+                var node = new TreeNode(item.Name)
+                {
+                    Tag = item.Id
+                };
                 if (_repository.GetItemsByParentId(item.Id).Any())
                 {
                     node.Nodes.Add(new TreeNode("TO_DELETE"));
@@ -49,12 +52,20 @@ namespace UniversityHierarchicalDB
 
                 if (result == DialogResult.OK)
                 {
-                    var newNodeName = form.Result;
+                    //var newNodeName = form.Result;
 
-                    _repository.AddItem(new UniversityItem(newNodeName));
+                    var node = new TreeNode(form.Result)
+                    {
+                        Tag = Guid.NewGuid()
+                    };
+                    node.ContextMenuStrip = nodeContextMenu;
+
+                    _repository.AddItem(new UniversityItem(node.Text, (Guid)node.Tag));
                     _repository.SaveChanges();
 
-                    RefreshTree();
+                    hierarchyTreeView.Nodes.Add(node);
+
+                    //RefreshTree();
                 }
             }
         }
@@ -67,13 +78,19 @@ namespace UniversityHierarchicalDB
 
                 if (result == DialogResult.OK)
                 {
-                    var newNodeName = form.Result;
+                    //var newNodeName = form.Result;
+                    var node = new TreeNode(form.Result)
+                    {
+                        Tag = Guid.NewGuid()
+                    };
+                    node.ContextMenuStrip = nodeContextMenu;
 
-                    _repository.AddItem(new UniversityItem(newNodeName, 
-                        hierarchyTreeView.SelectedNode.ImageIndex));
+                    _repository.AddItem(new UniversityItem(node.Text, (Guid)node.Tag,
+                        (Guid)hierarchyTreeView.SelectedNode.Tag));
                     _repository.SaveChanges();
 
-                    RefreshTree();
+                    hierarchyTreeView.SelectedNode.Nodes.Add(node);
+                    //RefreshTree();
                 }
             }
         }
@@ -87,17 +104,19 @@ namespace UniversityHierarchicalDB
 
             if (result == DialogResult.Yes)
             {
-                if (_repository.GetItemsByParentId(node.ImageIndex).Count() == 0)
+                if (_repository.GetItemsByParentId((Guid)node.Tag).Count() == 0)
                 {
-                    _repository.RemoveItemById(hierarchyTreeView.SelectedNode.ImageIndex);
+                    _repository.RemoveItemById((Guid)node.Tag);
                     _repository.SaveChanges();
 
-                    RefreshTree();
+                    node.Parent.Nodes.Remove(node);
+
+                    //RefreshTree();
 
                     return;
                 }
 
-                MessageBox.Show("You can not delete node that contains another nodes!", "Error", 
+                MessageBox.Show("You can not delete node that contains another nodes!", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -109,11 +128,15 @@ namespace UniversityHierarchicalDB
             {
                 e.Node.Nodes.Clear();
 
-                var childrenItems = _repository.GetItemsByParentId(e.Node.ImageIndex);
+                var childrenItems = _repository.GetItemsByParentId((Guid)e.Node.Tag);
 
                 foreach (var item in childrenItems)
                 {
-                    var node = new TreeNode(item.Name, item.Id, 0);
+                    var node = new TreeNode(item.Name)
+                    {
+                        Tag = item.Id
+                    };
+
                     if (_repository.GetItemsByParentId(item.Id).Any())
                     {
                         node.Nodes.Add(new TreeNode("TO_DELETE"));

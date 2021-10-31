@@ -1,7 +1,7 @@
 ﻿using Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EfUniversityHierarchical
 {
@@ -20,7 +20,7 @@ namespace EfUniversityHierarchical
             _context.UniversityItems.Add(item);
         }
 
-        public void RemoveItemById(int itemId)
+        public void RemoveItemById(Guid itemId)
         {
             var item = _context.UniversityItems.Find(itemId);
             if (item != null)
@@ -40,12 +40,12 @@ namespace EfUniversityHierarchical
             return _context.UniversityItems;
         }
 
-        public UniversityItem GetItemById(int itemId)
+        public UniversityItem GetItemById(Guid itemId)
         {
             return _context.UniversityItems.Find(itemId);
         }
 
-        public IEnumerable<UniversityItem> GetItemsByParentId(int? itemId)
+        public IEnumerable<UniversityItem> GetItemsByParentId(Guid? itemId)
         {
             return _context.UniversityItems.Where(x => x.ParentId == itemId);
         }
