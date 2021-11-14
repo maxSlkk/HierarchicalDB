@@ -34,10 +34,12 @@ namespace UniversityHierarchicalDB
                 {
                     Tag = item
                 };
+
                 if (_repository.GetItemsByParentId(item.Id).Any())
                 {
                     node.Nodes.Add(new TreeNode("TO_DELETE"));
                 }
+
                 node.ContextMenuStrip = nodeContextMenu;
 
                 hierarchyTreeView.Nodes.Add(node);
@@ -56,9 +58,9 @@ namespace UniversityHierarchicalDB
 
                     var node = new TreeNode(newUniversityItem.Name)
                     {
-                        Tag = newUniversityItem
+                        Tag = newUniversityItem,
+                        ContextMenuStrip = nodeContextMenu
                     };
-                    node.ContextMenuStrip = nodeContextMenu;
 
                     _repository.AddItem(newUniversityItem);
                     _repository.SaveChanges();
@@ -81,9 +83,9 @@ namespace UniversityHierarchicalDB
 
                     var node = new TreeNode(newUniversityItem.Name)
                     {
-                        Tag = newUniversityItem
+                        Tag = newUniversityItem,
+                        ContextMenuStrip = nodeContextMenu
                     };
-                    node.ContextMenuStrip = nodeContextMenu;
 
                     _repository.AddItem(newUniversityItem);
                     _repository.SaveChanges();
