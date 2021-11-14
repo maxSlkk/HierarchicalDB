@@ -59,6 +59,10 @@
     <Compile Include="Migrations\202110311943078_ChangedIdToGuid.designer.cs">
       <DependentUpon>202110311943078_ChangedIdToGuid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111141627348_AddedNodeTypeModel.cs" />
+    <Compile Include="Migrations\202111141627348_AddedNodeTypeModel.designer.cs">
+      <DependentUpon>202111141627348_AddedNodeTypeModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniversityContext.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110311943078_ChangedIdToGuid.resx">
       <DependentUpon>202110311943078_ChangedIdToGuid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111141627348_AddedNodeTypeModel.resx">
+      <DependentUpon>202111141627348_AddedNodeTypeModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

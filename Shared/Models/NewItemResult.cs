@@ -8,7 +8,7 @@ namespace Shared.Models
 {
     public class NewItemResult
     {
-        public string NodeType { get; set; }
+        public int NodeType { get; set; }
         public string NodeName { get; set; }
     }
 }

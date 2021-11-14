@@ -35,11 +35,13 @@ namespace UniversityHierarchicalDB
             this.btnSave = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tbParentNodeName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxNodeType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // tbNewNodeName
             // 
-            this.tbNewNodeName.Location = new System.Drawing.Point(12, 66);
+            this.tbNewNodeName.Location = new System.Drawing.Point(12, 104);
             this.tbNewNodeName.Name = "tbNewNodeName";
             this.tbNewNodeName.Size = new System.Drawing.Size(313, 20);
             this.tbNewNodeName.TabIndex = 0;
@@ -47,7 +49,7 @@ namespace UniversityHierarchicalDB
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 50);
+            this.label1.Location = new System.Drawing.Point(12, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 1;
@@ -55,7 +57,7 @@ namespace UniversityHierarchicalDB
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(12, 92);
+            this.btnCancel.Location = new System.Drawing.Point(12, 130);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -65,7 +67,7 @@ namespace UniversityHierarchicalDB
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(250, 92);
+            this.btnSave.Location = new System.Drawing.Point(250, 130);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 3;
@@ -76,7 +78,7 @@ namespace UniversityHierarchicalDB
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 9);
+            this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 5;
@@ -90,11 +92,31 @@ namespace UniversityHierarchicalDB
             this.tbParentNodeName.Size = new System.Drawing.Size(313, 20);
             this.tbParentNodeName.TabIndex = 4;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Node type:";
+            // 
+            // comboBoxNodeType
+            // 
+            this.comboBoxNodeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxNodeType.FormattingEnabled = true;
+            this.comboBoxNodeType.Location = new System.Drawing.Point(12, 64);
+            this.comboBoxNodeType.Name = "comboBoxNodeType";
+            this.comboBoxNodeType.Size = new System.Drawing.Size(313, 21);
+            this.comboBoxNodeType.TabIndex = 7;
+            // 
             // NewItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 128);
+            this.ClientSize = new System.Drawing.Size(337, 164);
+            this.Controls.Add(this.comboBoxNodeType);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbParentNodeName);
             this.Controls.Add(this.btnSave);
@@ -119,5 +141,7 @@ namespace UniversityHierarchicalDB
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbParentNodeName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBoxNodeType;
     }
 }

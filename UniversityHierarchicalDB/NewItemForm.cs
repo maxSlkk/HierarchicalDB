@@ -1,35 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using EfUniversityHierarchical;
+using Shared.Models;
+using Shared.Models.Db;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UniversityHierarchicalDB
 {
     public partial class NewItemForm : Form
     {
-        public string Result { get; set; }
+        private UniversityRepository _repository;
+
+        public NewItemResult Result { get; set; }
 
         public NewItemForm(string parentNodeName)
         {
             InitializeComponent();
 
+            _repository = new UniversityRepository();
+
             tbParentNodeName.Text = parentNodeName;
+
+            FillNodeTypesComboBox();
+        }
+
+        private void FillNodeTypesComboBox()
+        {
+            var nodeTypes = _repository.GetNodeTypes();
+
+            comboBoxNodeType.Items.AddRange(nodeTypes.ToArray());
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(comboBoxNodeType.Text))
+            {
+                MessageBox.Show("You need to select type of node! Please, try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (string.IsNullOrWhiteSpace(tbNewNodeName.Text))
             {
                 MessageBox.Show("Name can not be empty! Please, try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            Result = tbNewNodeName.Text;
+            Result = new NewItemResult { NodeName = tbNewNodeName.Text, NodeType = (comboBoxNodeType.SelectedItem as NodeType).Id };
 
             this.DialogResult = DialogResult.OK;
             Close();

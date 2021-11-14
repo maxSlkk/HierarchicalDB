@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\UniversityItem.cs" />
+    <Compile Include="Models\Db\NodeType.cs" />
+    <Compile Include="Models\NewItemResult.cs" />
+    <Compile Include="Models\Db\UniversityItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

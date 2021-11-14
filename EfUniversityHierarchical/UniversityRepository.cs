@@ -1,4 +1,4 @@
-﻿using Shared.Models;
+﻿using Shared.Models.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace EfUniversityHierarchical
             _context = new UniversityContext();
         }
 
-
+        #region UniversityItems table
         public void AddItem(UniversityItem item)
         {
             _context.UniversityItems.Add(item);
@@ -49,6 +49,19 @@ namespace EfUniversityHierarchical
         {
             return _context.UniversityItems.Where(x => x.ParentId == itemId);
         }
+        #endregion
+
+        #region NodeTypes table
+        public IEnumerable<NodeType> GetNodeTypes()
+        {
+            return _context.NodeTypes;
+        }
+
+        public NodeType GetNodeTypeById(int nodeTypeId)
+        {
+            return _context.NodeTypes.Find(nodeTypeId);
+        }
+        #endregion
 
 
         public void SaveChanges()
