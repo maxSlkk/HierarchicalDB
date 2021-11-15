@@ -26,7 +26,7 @@ namespace UniversityHierarchicalDB
         {
             hierarchyTreeView.Nodes.Clear();
 
-            var rootItems = _repository.GetItemsByParentId((Guid?)null);
+            var rootItems = _repository.GetItemsByParentId((Guid?)null).ToList();
 
             foreach (var item in rootItems)
             {
@@ -118,6 +118,32 @@ namespace UniversityHierarchicalDB
             }
         }
 
+        private void propertiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var node = hierarchyTreeView.SelectedNode;
+
+            using (var form = new ViewAndEditPropertiesForm(node.Tag, (node.Tag as UniversityItem).NodeTypeId))
+            {
+                var result = form.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    //var newUniversityItem = new UniversityItem(form.Result.NodeName, form.Result.NodeType, Guid.NewGuid(),
+                    //    (hierarchyTreeView.SelectedNode.Tag as UniversityItem).Id);
+
+                    //var node = new TreeNode(newUniversityItem.Name)
+                    //{
+                    //    Tag = newUniversityItem,
+                    //    ContextMenuStrip = nodeContextMenu
+                    //};
+
+                    //_repository.AddItem(newUniversityItem);
+                    //_repository.SaveChanges();
+
+                    //hierarchyTreeView.SelectedNode.Nodes.Add(node);
+                }
+            }
+        }
 
         private void hierarchyTreeView_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {

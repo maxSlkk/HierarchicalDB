@@ -37,7 +37,6 @@ namespace UniversityHierarchicalDB
             this.nodeContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hierarchyTreeContextMenu.SuspendLayout();
             this.nodeContextMenu.SuspendLayout();
@@ -81,37 +80,31 @@ namespace UniversityHierarchicalDB
             this.nodeContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNewItemToolStripMenuItem,
             this.deleteToolStripMenuItem,
-            this.editToolStripMenuItem,
             this.propertiesToolStripMenuItem});
             this.nodeContextMenu.Name = "nodeContextMenu";
             this.nodeContextMenu.ShowImageMargin = false;
-            this.nodeContextMenu.Size = new System.Drawing.Size(124, 92);
+            this.nodeContextMenu.Size = new System.Drawing.Size(156, 92);
             // 
             // addNewItemToolStripMenuItem
             // 
             this.addNewItemToolStripMenuItem.Name = "addNewItemToolStripMenuItem";
-            this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.addNewItemToolStripMenuItem.Text = "Add new item";
             this.addNewItemToolStripMenuItem.Click += new System.EventHandler(this.addNewItemToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.editToolStripMenuItem.Text = "Edit";
             // 
             // propertiesToolStripMenuItem
             // 
             this.propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
-            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.propertiesToolStripMenuItem.Text = "Properties";
+            this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.propertiesToolStripMenuItem_Click);
             // 
             // HierarchyForm
             // 
@@ -140,7 +133,6 @@ namespace UniversityHierarchicalDB
         private System.Windows.Forms.ContextMenuStrip nodeContextMenu;
         private System.Windows.Forms.ToolStripMenuItem addNewItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem;
     }
 }

@@ -44,10 +44,14 @@
     <Compile Include="Models\Db\NodeType.cs" />
     <Compile Include="Models\NewItemResult.cs" />
     <Compile Include="Models\Db\UniversityItem.cs" />
+    <Compile Include="Models\NodeTypes\Cathedra.cs" />
+    <Compile Include="Models\NodeTypes\Faculty.cs" />
+    <Compile Include="Models\NodeTypes\Group.cs" />
+    <Compile Include="Models\NodeTypes\Person.cs" />
+    <Compile Include="Models\NodeTypes\Specialty.cs" />
+    <Compile Include="Models\NodeTypes\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\ItemTypes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

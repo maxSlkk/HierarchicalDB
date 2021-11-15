@@ -70,6 +70,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewAndEditPropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewAndEditPropertiesForm.Designer.cs">
+      <DependentUpon>ViewAndEditPropertiesForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="HierarchyForm.resx">
       <DependentUpon>HierarchyForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +91,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ViewAndEditPropertiesForm.resx">
+      <DependentUpon>ViewAndEditPropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
