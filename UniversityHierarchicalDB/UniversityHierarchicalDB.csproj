@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreatingNodesForms\CreateStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatingNodesForms\CreateStudentForm.Designer.cs">
+      <DependentUpon>CreateStudentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HierarchyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="ViewAndEditPropertiesForm.Designer.cs">
       <DependentUpon>ViewAndEditPropertiesForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CreatingNodesForms\CreateStudentForm.resx">
+      <DependentUpon>CreateStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HierarchyForm.resx">
       <DependentUpon>HierarchyForm.cs</DependentUpon>
     </EmbeddedResource>

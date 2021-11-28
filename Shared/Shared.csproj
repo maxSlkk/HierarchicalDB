@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Db\NodeType.cs" />
+    <Compile Include="Models\EditPropertiesResult.cs" />
+    <Compile Include="Models\Enums\Sex.cs" />
+    <Compile Include="Models\FormResults\CreateStudentResult.cs" />
     <Compile Include="Models\NewItemResult.cs" />
     <Compile Include="Models\Db\UniversityItem.cs" />
     <Compile Include="Models\NodeTypes\Cathedra.cs" />

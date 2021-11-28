@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using EfUniversityHierarchical;
 using Shared.Models.Db;
 using System.Linq;
+using UniversityHierarchicalDB.CreatingNodesForms;
+using Shared.Models.NodeTypes;
 
 namespace UniversityHierarchicalDB
 {
@@ -54,7 +56,7 @@ namespace UniversityHierarchicalDB
 
                 if (result == DialogResult.OK)
                 {
-                    var newUniversityItem = new UniversityItem(form.Result.NodeName, form.Result.NodeType, Guid.NewGuid());
+                    var newUniversityItem = new UniversityItem(form.Result.NodeName, form.Result.NodeType, Guid.NewGuid(), null);
 
                     var node = new TreeNode(newUniversityItem.Name)
                     {
@@ -128,19 +130,12 @@ namespace UniversityHierarchicalDB
 
                 if (result == DialogResult.OK)
                 {
-                    //var newUniversityItem = new UniversityItem(form.Result.NodeName, form.Result.NodeType, Guid.NewGuid(),
-                    //    (hierarchyTreeView.SelectedNode.Tag as UniversityItem).Id);
+                    var item = (UniversityItem)form.Result.Obj;
 
-                    //var node = new TreeNode(newUniversityItem.Name)
-                    //{
-                    //    Tag = newUniversityItem,
-                    //    ContextMenuStrip = nodeContextMenu
-                    //};
+                    _repository.EditItem(item);
+                    _repository.SaveChanges();
 
-                    //_repository.AddItem(newUniversityItem);
-                    //_repository.SaveChanges();
-
-                    //hierarchyTreeView.SelectedNode.Nodes.Add(node);
+                    hierarchyTreeView.SelectedNode.Text = item.Name;
                 }
             }
         }
@@ -172,5 +167,37 @@ namespace UniversityHierarchicalDB
                 e.Node.Nodes.Add(node);
             }
         }
+
+        #region Creating typed nodes
+        private void studentToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (var form = new CreateStudentForm(hierarchyTreeView.SelectedNode.Text))
+            {
+                var result = form.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    var nodeTypeId = _repository.GetNodeTypes().First(x => x.Type.Equals("Student")).Id;
+
+                    var (student, person, universityItem) =
+                        Student.CreateStudent(form.Result.Id, form.Result.Name, nodeTypeId, (hierarchyTreeView.SelectedNode.Tag as UniversityItem).Id,
+                            form.Result.BirthDate, form.Result.Sex, form.Result.GradebookNumber);
+
+                    var node = new TreeNode(universityItem.Name)
+                    {
+                        Tag = universityItem,
+                        ContextMenuStrip = nodeContextMenu
+                    };
+
+                    _repository.AddItem(universityItem);
+                    _repository.AddPerson(person);
+                    _repository.AddStudent(student);
+                    _repository.SaveChanges();
+
+                    hierarchyTreeView.SelectedNode.Nodes.Add(node);
+                }
+            }
+        }
+        #endregion
     }
 }

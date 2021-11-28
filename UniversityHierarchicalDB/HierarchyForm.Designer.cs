@@ -38,6 +38,12 @@ namespace UniversityHierarchicalDB
             this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.specialtyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cathedraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.studentToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.professorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hierarchyTreeContextMenu.SuspendLayout();
             this.nodeContextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +93,13 @@ namespace UniversityHierarchicalDB
             // 
             // addNewItemToolStripMenuItem
             // 
+            this.addNewItemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.studentToolStripMenuItem,
+            this.specialtyToolStripMenuItem,
+            this.cathedraToolStripMenuItem,
+            this.groupToolStripMenuItem,
+            this.studentToolStripMenuItem1,
+            this.professorToolStripMenuItem});
             this.addNewItemToolStripMenuItem.Name = "addNewItemToolStripMenuItem";
             this.addNewItemToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.addNewItemToolStripMenuItem.Text = "Add new item";
@@ -105,6 +118,43 @@ namespace UniversityHierarchicalDB
             this.propertiesToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.propertiesToolStripMenuItem.Text = "Properties";
             this.propertiesToolStripMenuItem.Click += new System.EventHandler(this.propertiesToolStripMenuItem_Click);
+            // 
+            // studentToolStripMenuItem
+            // 
+            this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
+            this.studentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.studentToolStripMenuItem.Text = "Faculty";
+            // 
+            // specialtyToolStripMenuItem
+            // 
+            this.specialtyToolStripMenuItem.Name = "specialtyToolStripMenuItem";
+            this.specialtyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.specialtyToolStripMenuItem.Text = "Specialty";
+            // 
+            // cathedraToolStripMenuItem
+            // 
+            this.cathedraToolStripMenuItem.Name = "cathedraToolStripMenuItem";
+            this.cathedraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cathedraToolStripMenuItem.Text = "Cathedra";
+            // 
+            // groupToolStripMenuItem
+            // 
+            this.groupToolStripMenuItem.Name = "groupToolStripMenuItem";
+            this.groupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.groupToolStripMenuItem.Text = "Group";
+            // 
+            // studentToolStripMenuItem1
+            // 
+            this.studentToolStripMenuItem1.Name = "studentToolStripMenuItem1";
+            this.studentToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.studentToolStripMenuItem1.Text = "Student";
+            this.studentToolStripMenuItem1.Click += new System.EventHandler(this.studentToolStripMenuItem1_Click);
+            // 
+            // professorToolStripMenuItem
+            // 
+            this.professorToolStripMenuItem.Name = "professorToolStripMenuItem";
+            this.professorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.professorToolStripMenuItem.Text = "Professor";
             // 
             // HierarchyForm
             // 
@@ -134,6 +184,12 @@ namespace UniversityHierarchicalDB
         private System.Windows.Forms.ToolStripMenuItem addNewItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem propertiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem specialtyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cathedraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem groupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem professorToolStripMenuItem;
     }
 }
 

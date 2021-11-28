@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using EfUniversityHierarchical;
 using System.Collections.Generic;
 using System.Reflection;
+using Shared.Models.Db;
+using Shared.Models;
 
 namespace UniversityHierarchicalDB
 {
@@ -11,29 +13,54 @@ namespace UniversityHierarchicalDB
     {
         private bool _isEditModeEnabled = false;
         private UniversityRepository _repository;
-        public object Result;
+        public EditPropertiesResult Result;
+
+        private object _obj;
+        private int _objType;
 
         public ViewAndEditPropertiesForm(object obj, int objType)
         {
             InitializeComponent();
 
             _repository = new UniversityRepository();
+            _obj = obj;
+            _objType = objType;
 
-            ShowNeededFields(obj, objType);
+            ShowNeededFields();
         }
 
-        private void ShowNeededFields(object obj, int objType)
+        private void ShowNeededFields()
         {
-            var typeName = _repository.GetNodeTypeById(objType).Type;
+            var item = (UniversityItem)_obj;
 
-            if (typeName == "Student")
-            {
-                var properties = typeof(Student).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            }
-            else if (typeName == "Person")
-            {
-                var properties = typeof(Person).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            }
+            tbID.Text = item.Id.ToString();
+            tbName.Text = item.Name;
+
+            //var typeName = _repository.GetNodeTypeById(objType).Type;
+
+            //if (typeName == "Student")
+            //{
+            //    var student = (Student)obj;
+
+            //    var properties = typeof(Student).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            //    var tbBirthDate = new TextBox
+            //    {
+            //        Text = student.BirthDate.ToString()
+            //    };
+
+            //    var tbGradebookNumber = new TextBox
+            //    {
+            //        Text = student.GradebookNumber.ToString()
+            //    };
+
+            //    Controls.Add(tbBirthDate);
+            //    Controls.Add(tbGradebookNumber);
+            //}
+            //else if (typeName == "Person")
+            //{
+            //    var properties = typeof(Person).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            //}
         }
 
         private void btnEnableEditing_Click(object sender, EventArgs e)
@@ -42,6 +69,7 @@ namespace UniversityHierarchicalDB
             {
                 _isEditModeEnabled = true;
                 btnSave.Enabled = true;
+                tbName.ReadOnly = false;
             }
         }
 
@@ -69,7 +97,10 @@ namespace UniversityHierarchicalDB
                 return;
             }
 
-            Result = null;
+            var item = (UniversityItem)_obj;
+            item.Name = tbName.Text;
+
+            Result = new EditPropertiesResult { ObjType = _objType, Obj = item };
 
             this.DialogResult = DialogResult.OK;
             Close();

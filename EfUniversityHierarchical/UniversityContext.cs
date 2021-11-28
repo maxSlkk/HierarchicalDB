@@ -1,4 +1,5 @@
 ﻿using Shared.Models.Db;
+using Shared.Models.NodeTypes;
 using System.Data.Entity;
 
 namespace EfUniversityHierarchical
@@ -12,6 +13,10 @@ namespace EfUniversityHierarchical
         public DbSet<UniversityItem> UniversityItems { get; set; }
 
         public DbSet<NodeType> NodeTypes { get; set; }
+
+        public DbSet<Person> Persons { get; set; }
+
+        public DbSet<Student> Students { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

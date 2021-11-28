@@ -13,13 +13,17 @@ namespace Shared.Models.Db
 
         public UniversityItem() { }
 
-        public UniversityItem(string name, int nodeType, Guid id)
+        public UniversityItem(string name, int nodeType, Guid id, Guid? parentId) 
         {
             Name = name;
             NodeTypeId = nodeType;
             Id = id;
+            ParentId = parentId;
         }
 
-        public UniversityItem(string name, int nodeType, Guid id, Guid parentId) : this(name, nodeType, id) => ParentId = parentId;
+        public static UniversityItem CreateUniversityItem(Guid id, string name, int nodeType, Guid? parentId)
+        {
+            return new UniversityItem(name, nodeType, id, parentId);
+        }
     }
 }

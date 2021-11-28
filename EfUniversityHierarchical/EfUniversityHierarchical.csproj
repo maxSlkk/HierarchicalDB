@@ -63,6 +63,10 @@
     <Compile Include="Migrations\202111141627348_AddedNodeTypeModel.designer.cs">
       <DependentUpon>202111141627348_AddedNodeTypeModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111281327571_AddedTablesPersonAndStudent.cs" />
+    <Compile Include="Migrations\202111281327571_AddedTablesPersonAndStudent.designer.cs">
+      <DependentUpon>202111281327571_AddedTablesPersonAndStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniversityContext.cs" />
@@ -87,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111141627348_AddedNodeTypeModel.resx">
       <DependentUpon>202111141627348_AddedNodeTypeModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111281327571_AddedTablesPersonAndStudent.resx">
+      <DependentUpon>202111281327571_AddedTablesPersonAndStudent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

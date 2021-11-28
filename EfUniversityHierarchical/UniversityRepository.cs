@@ -1,4 +1,5 @@
 ﻿using Shared.Models.Db;
+using Shared.Models.NodeTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,20 @@ namespace EfUniversityHierarchical
         public NodeType GetNodeTypeById(int nodeTypeId)
         {
             return _context.NodeTypes.Find(nodeTypeId);
+        }
+        #endregion
+
+        #region Students table
+        public void AddStudent(Student student)
+        {
+            _context.Students.Add(student);
+        }
+        #endregion
+
+        #region People table
+        public void AddPerson(Person person)
+        {
+            _context.Persons.Add(person);
         }
         #endregion
 
